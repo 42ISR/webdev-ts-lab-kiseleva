@@ -62,6 +62,10 @@ function updateOrder(order: IOrder, patch: Partial<IOrder>): IOrder {
   return { ...order, ...patch }
 }
 
+const updated = updateOrder(orders[0], { status: "done" })
+console.log(updated.status) 
+console.log(orders[0].status)
+
 function orderSummary(order: IOrder): Pick<IOrder, "id" | "status"> {
   return { id: order.id, status: order.status }
 }
@@ -71,28 +75,36 @@ function publicOrder(order: IOrder): Omit<IOrder, "customer"> {
   return rest
 }
 
+console.log(publicOrder(orders[0]))
+
 function indexOrdersById(orders: IOrder[]): Record<string, IOrder> {
   const result: Record<string, IOrder> = {}
   for (const o of orders) result[o.id] = o
   return result
 }
+console.log(Object.keys(indexOrdersById(orders)))
 
 function freezeItem(item: IMenuItem): Readonly<IMenuItem> {
   return item
 }
 
-
-
-
-
-//првоерки
-const updated = updateOrder(orders[0], { status: "done" })
-console.log(updated.status)     
-console.log(orders[0].status)   
-console.log(orderSummary(orders[0]))   
-console.log(publicOrder(orders[0]))
-const index = indexOrdersById(orders)
-console.log(Object.keys(index)) 
 const frozen = freezeItem(menuItem)
-console.log(frozen.label())  
+console.log(frozen.label())
+
 export {}
+
+
+
+
+
+// //првоерки
+// const updated = updateOrder(orders[0], { status: "done" })
+// console.log(updated.status)     
+// console.log(orders[0].status)   
+// console.log(orderSummary(orders[0]))   
+// console.log(publicOrder(orders[0]))
+// const index = indexOrdersById(orders)
+// console.log(Object.keys(index)) 
+// const frozen = freezeItem(menuItem)
+// console.log(frozen.label())  
+// export {}

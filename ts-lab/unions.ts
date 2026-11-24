@@ -57,7 +57,7 @@ function filterByStatus(orders: IOrder[], status: OrderStatus): IOrder[] {
 }
 
 const newOrders = filterByStatus(orders, "new")
-console.log(newOrders.map((o) => o.id)) 
+console.log(newOrders.map((o) => o.id))
 
 // gjbcr
 function findOrder(orders: IOrder[], id: string): IOrder | undefined {
@@ -74,12 +74,12 @@ if (found) {
 console.log(countByStatus(orders))
 
 if (found) {
-  console.log(found.id) // o2
+  console.log(found.id)
 } else {
   console.log("заказ не найден")
 }
 
-const missing = findOrder(orders, "o99")
+const missing = findOrder(orders, "o22")
 if (missing) {
   console.log(missing.id)
 } else {
